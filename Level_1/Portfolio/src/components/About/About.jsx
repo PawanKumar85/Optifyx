@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./About.module.css";
 import { getImageUrl } from "../../utils";
-const About = ({ data }) => {
+import axios from "axios";
+
+const About = () => {
+  const [aboutData, setAboutData] = useState([]);
+  const [loading, setLoading] = useState(true); // Initialize loading state
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/v2/portfolio/about"
+        );
+        setAboutData(response.data.data); // Set the data correctly
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className={style.container} id="about">
       <h2 className={style.title}>About</h2>
@@ -11,13 +32,15 @@ const About = ({ data }) => {
           alt="about Image of me"
           className={`${style.aboutImg}`}
         />
-        <ul className={style.aboutItems}>
-          {data.about.map((item) => {
-            return (
-              <li key={item.aboutId} className={style.aboutItem}>
+        {loading ? ( // Render loading indicator
+          <p>Loading...</p>
+        ) : (
+          <ul className={style.aboutItems}>
+            {aboutData.map((item) => (
+              <li key={item._id} className={style.aboutItem}>
                 <img
-                  src={getImageUrl(`${item.imageSrc}`)}
-                  alt={item.alt}
+                  src={item.imageUrl}
+                  alt={item.title}
                   className="w-[70px] h-[70px]"
                 />
                 <div className={style.aboutItemText}>
@@ -25,9 +48,9 @@ const About = ({ data }) => {
                   <p>{item.description}</p>
                 </div>
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );

@@ -1,24 +1,23 @@
 import express from "express";
+import connectDB from "./config/database.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import router from "./routes/route.js"; // Ensure route.js is correctly set up
-
+import router from "./routes/contact.js";
 dotenv.config();
+
+connectDB();
+
 const app = express();
-const PORT = process.env.PORT || 4000;
-// Middleware
-app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 app.use(cors());
-// Routes
-app.use('/api/v2/portfolio', router); // Ensure 'router' points to a valid file
+app.use("/api/v1/portfolio",router);
 
-// Base route for testing the API
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the Node.js API!' });
+app.get("/", (req, res) => {
+  res.send("API is running...");
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

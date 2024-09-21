@@ -26,29 +26,6 @@
       "navLink": "project"
     }
   ],
-  "about": [
-    {
-      "aboutId": 1,
-      "title": "Front-End Developer",
-      "description": "I'm a Fontend Developer with experience in building responsive and optimize site",
-      "imageSrc": "about/cursorIcon.png",
-      "alt": "Cursor Icon"
-    },
-    {
-      "aboutId": 2,
-      "title": "Back-End Developer",
-      "description": "I have experience developing fast and optimize back-end systems and APIs.",
-      "imageSrc": "about/serverIcon.png",
-      "alt": "Server Icon"
-    },
-    {
-      "aboutId": 3,
-      "title": "DSA",
-      "description": "I have a solid understanding of Data Structures and Algorithms (DSA) and have solved numerous problems on platforms like LeetCode, HackerRank, and GFG",
-      "imageSrc": "about/uiIcon.png",
-      "alt": "UI Icon"
-    }
-  ],
   "qualification": [
     {
       "title": "Bachelor of Technology",

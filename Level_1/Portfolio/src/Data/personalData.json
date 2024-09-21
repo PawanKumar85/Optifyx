@@ -26,36 +26,6 @@
       "navLink": "project"
     }
   ],
-  "qualification": [
-    {
-      "title": "Bachelor of Technology",
-      "course": "Branch",
-      "courseID": "CSE",
-      "collage": "Maharana Pratap Engineering Collage,Kanpur",
-      "duration": "2022 -Present"
-    },
-    {
-      "title": "Diploma",
-      "course": "Branch",
-      "courseID": "Mechanical Engineering",
-      "collage": "Govt. Polytechnic Agra,Shamsabad",
-      "duration": "2019 - 2022"
-    },
-    {
-      "title": "Intermediate",
-      "course": "Board",
-      "courseID": "CBSE",
-      "collage": "D.A.V. Sr. Sec. Public School,Rihand Nagar Sonbhadra",
-      "duration": "2017 - 2019"
-    },
-    {
-      "title": "High School",
-      "course": "Board",
-      "courseID": "CBSE",
-      "collage": "D.A.V. Sr. Sec. Public School,Rihand Nagar Sonbhadra",
-      "duration": "2017 - 2019"
-    }
-  ],
   "projects": [
     {
       "title": "Tic-Tae-Toe",

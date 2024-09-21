@@ -1,0 +1,23 @@
+@import "../../vars.css";
+
+.container {
+  margin: 76px 10%; /* Set consistent margins */
+  color: var(--color-text);
+}
+
+.title {
+  font-size: 2rem; /* Increased size for better visibility */
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center; /* Centered title for better presentation */
+  margin-bottom: 40px; /* Space below title */
+}
+
+.projects {
+  margin-top: 20px; /* Reduced top margin for better spacing */
+  display: grid; /* Use grid layout for a more structured look */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid */
+  gap: 30px; /* Increased gap between cards for better spacing */
+  justify-items: center; /* Center items in each grid cell */
+}

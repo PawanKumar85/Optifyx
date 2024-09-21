@@ -1,0 +1,243 @@
+{
+  "id": 1,
+  "portfolio": "</code>",
+  "profileLink": "https://avatars.githubusercontent.com/u/104499385?v=4",
+  "name": "Pawan Kumar",
+  "bio": "I'm a full-stack developer with a passion for building scalable and efficient applications.",
+  "navbar": [
+    {
+      "navName": "About",
+      "navLink": "about"
+    },
+    {
+      "navName": "Education",
+      "navLink": "education"
+    },
+    {
+      "navName": "Skills",
+      "navLink": "experience"
+    },
+    {
+      "navName": "Platform",
+      "navLink": "platform"
+    },
+    {
+      "navName": "Projects",
+      "navLink": "project"
+    }
+  ],
+  "about": [
+    {
+      "aboutId": 1,
+      "title": "Front-End Developer",
+      "description": "I'm a Fontend Developer with experience in building responsive and optimize site",
+      "imageSrc": "about/cursorIcon.png",
+      "alt": "Cursor Icon"
+    },
+    {
+      "aboutId": 2,
+      "title": "Back-End Developer",
+      "description": "I have experience developing fast and optimize back-end systems and APIs.",
+      "imageSrc": "about/serverIcon.png",
+      "alt": "Server Icon"
+    },
+    {
+      "aboutId": 3,
+      "title": "DSA",
+      "description": "I have a solid understanding of Data Structures and Algorithms (DSA) and have solved numerous problems on platforms like LeetCode, HackerRank, and GFG",
+      "imageSrc": "about/uiIcon.png",
+      "alt": "UI Icon"
+    }
+  ],
+  "qualification": [
+    {
+      "title": "Bachelor of Technology",
+      "course": "Branch",
+      "courseID": "CSE",
+      "collage": "Maharana Pratap Engineering Collage,Kanpur",
+      "duration": "2022 -Present"
+    },
+    {
+      "title": "Diploma",
+      "course": "Branch",
+      "courseID": "Mechanical Engineering",
+      "collage": "Govt. Polytechnic Agra,Shamsabad",
+      "duration": "2019 - 2022"
+    },
+    {
+      "title": "Intermediate",
+      "course": "Board",
+      "courseID": "CBSE",
+      "collage": "D.A.V. Sr. Sec. Public School,Rihand Nagar Sonbhadra",
+      "duration": "2017 - 2019"
+    },
+    {
+      "title": "High School",
+      "course": "Board",
+      "courseID": "CBSE",
+      "collage": "D.A.V. Sr. Sec. Public School,Rihand Nagar Sonbhadra",
+      "duration": "2017 - 2019"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Tic-Tae-Toe",
+      "imageSrc": "projects/Tie-Tac-Toe.png",
+      "skills": ["React", "Bootstrap5", "Node"],
+      "demo": "https://projects-seven-sigma.vercel.app/"
+
+    },
+    {
+      "title": "Password Generater",
+      "imageSrc": "projects/password-generation.png",
+      "skills": ["React", "Bootstrap5", "Node"],
+      "demo": "https://password-generater-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
+    },
+    {
+      "title": "To-do List",
+      "imageSrc": "projects/todo.png",
+      "skills": ["React", "tailwind", "Node"],
+      "demo": "https://todo-list-pawan-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
+    }
+  ],
+  "skills": [
+    {
+      "skillId": 1,
+      "title": "MongoDB",
+      "imageSrc": "skills/mongoDB3D.png"
+    },
+    {
+      "skillId": 2,
+      "title": "ExpressJS",
+      "imageSrc": "skills/express3D.png"
+    },
+    {
+      "skillId": 3,
+      "title": "React",
+      "imageSrc": "skills/react3D.png"
+    },
+    {
+      "skillId": 4,
+      "title": "Node",
+      "imageSrc": "skills/nodejs3D.png"
+    },
+    {
+      "skillId": 5,
+      "title": "HTML",
+      "imageSrc": "skills/html3D.png"
+    },
+    {
+      "skillId": 6,
+      "title": "CSS",
+      "imageSrc": "skills/css3D.png"
+    },
+    {
+      "skillId": 7,
+      "title": "Javascript",
+      "imageSrc": "skills/javascript3D.png"
+    },
+    {
+      "skillId": 8,
+      "title": "TypeScript",
+      "imageSrc": "skills/typescript.png"
+    },
+    {
+      "skillId":9,
+      "title":"NextJS",
+      "imageSrc":"skills/nextJs3D.png"
+    },
+    {
+      "skillId": 10,
+      "title": "C++",
+      "imageSrc": "skills/cpp3D.png"
+    },
+    {
+      "skillId": 11,
+      "title": "git",
+      "imageSrc": "skills/git3D.png"
+    },
+    {
+      "skillId": 12,
+      "title": "docker*",
+      "imageSrc": "skills/docker.png"
+    },
+    {
+      "skillId": 13,
+      "title": "AWS*",
+      "imageSrc": "skills/aws.png"
+    }
+  ],
+  "platform": [
+    {
+      "title": "GeeksGeeks",
+      "imageSrc": "platform/gfg.png",
+      "description": "I have solved over 250 problems, maintained a maximum streak of 107 consecutive days of problem-solving, and participated in 1 coding contest. This experience has significantly enhanced my problem-solving abilities, deepened my understanding of algorithms and data structures, and improved my efficiency in tackling complex coding challenges.",
+      "link": "https://www.geeksforgeeks.org/user/pawan_kumar85440/"
+    },
+    {
+      "title": "Leetcode",
+      "imageSrc": "platform/leetcode.png",
+      "description": "I have solved 253 questions on LeetCode, with a maximum streak of 124 days. Along the way, I’ve earned five badges, including the 100 Days badge, 50 Days badge, and monthly badges for May, April, and March. This progress demonstrates my consistency and determination in problem-solving and algorithmic challenges.",
+      "link": "https://leetcode.com/u/Pawan83033/"
+    },
+    {
+      "title": "HackerRank",
+      "imageSrc": "platform/hackerRank2.jpg",
+      "description": "I have demonstrated versatility across multiple domains, earning 5 stars in both C++ and C, along with 3 stars in Problem Solving and SQL. I have also achieved 2 stars in Python and JavaScript, further expanding my expertise in backend and scripting languages.",
+      "link": "https://www.hackerrank.com/profile/pawan630703"
+    }
+  ],
+  "education": [
+    {
+      "start_date": "August 2018",
+      "end_date": "May 2022",
+      "institution": "University of XYZ",
+      "description": "Bachelor of Science in Computer Science",
+      "image": "https://example.com/your-image-url.jpg"
+    },
+    {
+      "start_date": "September 2022",
+      "end_date": "Present",
+      "institution": "Graduate School of ABC",
+      "description": "Master's in Data Science",
+      "image": "https://example.com/another-image-url.jpg"
+    },
+    {
+      "start_date": "September 2022",
+      "end_date": "Present",
+      "institution": "Graduate School of ABC",
+      "description": "Master's in Data Science",
+      "image": "https://example.com/another-image-url.jpg"
+    }
+  ],
+  "contacts": {
+    "title": "Contact",
+    "description": "Feel Free to react out!",
+    "contactInfo": [
+      {
+        "contactId": 1,
+        "type": "Linkedin",
+        "link": "https://www.linkedin.com/in/pawan-kumar-89402a205",
+        "name": "linkedin.com/PawanKumar85",
+        "icon": "contact/linkedinIcon.png",
+        "alt": "Linkedin Icon"
+      },
+      {
+        "contactId": 2,
+        "type": "github",
+        "link": "https://github.com/PawanKumar85",
+        "name": "github.com/PawanKumar85",
+        "icon": "contact/githubIcon.png",
+        "alt": "Github Icon"
+      }
+    ],
+    "emailInfo": {
+      "type": "email",
+      "emailId": "pawan630703@gmail.com",
+      "name": "pawan@gmail.com",
+      "icon": "contact/emailIcon.png",
+      "alt": "Email Icon"
+    }
+  },
+  "achievement": []
+}

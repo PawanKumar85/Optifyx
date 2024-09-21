@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from "react";
 import style from "./About.module.css";
 import { getImageUrl } from "../../utils";
@@ -11,7 +9,7 @@ const About = ({ data }) => {
         <img
           src={getImageUrl("about/skills.png")}
           alt="about Image of me"
-          className={style.aboutImg}
+          className={`${style.aboutImg}`}
         />
         <ul className={style.aboutItems}>
           {data.about.map((item) => {
@@ -20,6 +18,7 @@ const About = ({ data }) => {
                 <img
                   src={getImageUrl(`${item.imageSrc}`)}
                   alt={item.alt}
+                  className="w-[70px] h-[70px]"
                 />
                 <div className={style.aboutItemText}>
                   <h3>{item.title}</h3>

@@ -30,88 +30,32 @@
     {
       "title": "Tic-Tae-Toe",
       "imageSrc": "projects/Tie-Tac-Toe.png",
-      "skills": ["React", "Bootstrap5", "Node"],
+      "skills": [
+        "React",
+        "Bootstrap5",
+        "Node"
+      ],
       "demo": "https://projects-seven-sigma.vercel.app/"
-
     },
     {
       "title": "Password Generater",
       "imageSrc": "projects/password-generation.png",
-      "skills": ["React", "Bootstrap5", "Node"],
+      "skills": [
+        "React",
+        "Bootstrap5",
+        "Node"
+      ],
       "demo": "https://password-generater-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
     },
     {
       "title": "To-do List",
       "imageSrc": "projects/todo.png",
-      "skills": ["React", "tailwind", "Node"],
+      "skills": [
+        "React",
+        "tailwind",
+        "Node"
+      ],
       "demo": "https://todo-list-pawan-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
-    }
-  ],
-  "skills": [
-    {
-      "skillId": 1,
-      "title": "MongoDB",
-      "imageSrc": "skills/mongoDB3D.png"
-    },
-    {
-      "skillId": 2,
-      "title": "ExpressJS",
-      "imageSrc": "skills/express3D.png"
-    },
-    {
-      "skillId": 3,
-      "title": "React",
-      "imageSrc": "skills/react3D.png"
-    },
-    {
-      "skillId": 4,
-      "title": "Node",
-      "imageSrc": "skills/nodejs3D.png"
-    },
-    {
-      "skillId": 5,
-      "title": "HTML",
-      "imageSrc": "skills/html3D.png"
-    },
-    {
-      "skillId": 6,
-      "title": "CSS",
-      "imageSrc": "skills/css3D.png"
-    },
-    {
-      "skillId": 7,
-      "title": "Javascript",
-      "imageSrc": "skills/javascript3D.png"
-    },
-    {
-      "skillId": 8,
-      "title": "TypeScript",
-      "imageSrc": "skills/typescript.png"
-    },
-    {
-      "skillId":9,
-      "title":"NextJS",
-      "imageSrc":"skills/nextJs3D.png"
-    },
-    {
-      "skillId": 10,
-      "title": "C++",
-      "imageSrc": "skills/cpp3D.png"
-    },
-    {
-      "skillId": 11,
-      "title": "git",
-      "imageSrc": "skills/git3D.png"
-    },
-    {
-      "skillId": 12,
-      "title": "docker*",
-      "imageSrc": "skills/docker.png"
-    },
-    {
-      "skillId": 13,
-      "title": "AWS*",
-      "imageSrc": "skills/aws.png"
     }
   ],
   "platform": [

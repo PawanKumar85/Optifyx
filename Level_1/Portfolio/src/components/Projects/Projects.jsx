@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Projects.module.css";
 import Card from "./Card";
-import Spinner from "../Spinner"; // Import the Spinner component
+import Spinner from "../Spinner"; 
 import axios from "axios";
 
 const Projects = () => {
@@ -27,7 +27,7 @@ const Projects = () => {
   }, []);
 
   if (loading) {
-    return <Spinner />; // Display the spinner while loading
+    return <Spinner />; 
   }
 
   if (error) {

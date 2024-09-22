@@ -1,28 +1,27 @@
 @import "../../vars.css";
 
 .container {
-  margin: 76px 10%; /* Set consistent margins */
+  margin: 76px 10%; 
   color: var(--color-text);
 }
 
 .title {
-  font-size: 2rem; /* Increased size for better visibility */
+  font-size: 2rem; 
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  text-align: center; /* Centered title for better presentation */
-  margin-bottom: 40px; /* Space below title */
+  text-align: center; 
+  margin-bottom: 40px; 
 }
 
 .projects {
-  margin-top: 20px; /* Reduced top margin for better spacing */
-  display: flex; /* Use flexbox for horizontal layout */
-  overflow-x: auto; /* Enable horizontal scrolling */
-  padding: 10px 0; /* Add padding for aesthetics */
-  gap: 30px; /* Space between cards */
+  margin-top: 20px; 
+  display: flex; 
+  overflow-x: auto; 
+  padding: 10px 0; 
+  gap: 30px; 
 }
 
 .projectCard {
-  flex: 0 0 300px; /* Set fixed width for cards */
-  /* You can add additional styles for the card here */
+  flex: 0 0 300px;
 }

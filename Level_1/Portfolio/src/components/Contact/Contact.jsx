@@ -6,7 +6,7 @@ import { getImageUrl } from "../../utils";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "", // Use 'name' consistently
+    name: "",
     email: "",
     message: "",
   });
@@ -19,7 +19,7 @@ const Contact = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.id]: e.target.value, // Dynamically update form data based on input id
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -37,7 +37,7 @@ const Contact = () => {
       );
       console.log("Form data submitted:", response.data);
       setSuccess(true);
-      // Reset form after successful submission
+      
       setFormData({
         name: "",
         email: "",

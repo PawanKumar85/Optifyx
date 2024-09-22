@@ -1,5 +1,4 @@
 import React from "react";
-import { getImageUrl } from "../../utils";
 import style from './Card.module.css';
 
 const Card = ({
@@ -29,7 +28,7 @@ const Card = ({
             href={link}
             className={`w-full text-center ${style.link}`}
             target="_blank"
-            rel="noopener noreferrer" // Security improvement
+            rel="noopener noreferrer" 
           >
             View Demo
           </a>
@@ -39,7 +38,7 @@ const Card = ({
             href={source}
             className={style.link}
             target="_blank"
-            rel="noopener noreferrer" // Security improvement
+            rel="noopener noreferrer"
           >
             View Source
           </a>

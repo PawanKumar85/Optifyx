@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import style from "./Experience.module.css";
-import { getImageUrl } from "../../utils";
 import axios from "axios";
 
 const Experience = () => {
@@ -10,9 +9,8 @@ const Experience = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/skill");
-        // Check if the response has the expected structure
         if (response.data && response.data.data) {
-          setSkillData(response.data.data); // Use the correct data path
+          setSkillData(response.data.data);
         } else {
           console.error("Unexpected response structure:", response.data);
         }
@@ -28,7 +26,7 @@ const Experience = () => {
       <h2 className={style.title}>Skills</h2>
       <div className={style.content}>
         <div className={style.skills}>
-          {skillData.map((skill, index) => { // Using index as a fallback key
+          {skillData.map((skill, index) => {
             return (
               <div key={skill.skillId || index} className={style.skill}>
                 <div className={style.skillImagContainer}>

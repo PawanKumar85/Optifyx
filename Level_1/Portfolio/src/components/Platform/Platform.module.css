@@ -4,68 +4,68 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0; /* Increased padding for a spacious feel */
-  background: var(--color-background); /* Light background color */
+  padding: 40px 0;
+  background: var(--color-background); 
 }
 
 .container {
   max-width: 1200px;
   width: 100%;
-  padding: 20px; /* Added padding to container */
+  padding: 20px; 
 }
 
 .title {
-  font-size: 2.8rem; /* Increased font size */
+  font-size: 2.8rem; 
   margin-bottom: 2rem;
   text-align: center;
-  color: var(--color-text); /* Emphasized color for the title */
+  color: var(--color-text);
 }
 
 .serviceslist {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min width */
-  grid-gap: 30px; /* Reduced space between items */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 30px; 
   margin-top: 40px;
 }
 
 .service {
-  background: var(--color-secondary); /* Card background color */
+  background: var(--color-secondary);
   padding: 30px; /* Inner padding */
   border-radius: 15px; /* Softer corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
-  transition: transform 0.3s, box-shadow 0.3s; /* Added shadow transition */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s; 
 }
 
 .service:hover {
-  transform: translateY(-5px); /* Slight upward motion on hover */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .image {
   width: 50px;
-  height: 50px; /* Fixed height for consistency */
+  height: 50px;
   object-fit: fit;
-  border-radius: 20px; /* Rounded corners */
-  margin-bottom: 20px; /* Spacing below the image */
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
 .serviceTitle {
-  font-size: 1.8rem; /* Increased title size */
-  font-weight: 600; /* Bolder title */
-  margin-bottom: 10px; /* Spacing below the title */
-  color: var(--color-text); /* Darker title color for contrast */
+  font-size: 1.8rem; 
+  font-weight: 600; 
+  margin-bottom: 10px;
+  color: var(--color-text);
 }
 
 .description {
   font-size: 1rem; 
-  margin-bottom: 20px; /* More spacing before the button */
-  color: var(--color-text-light); /* Lighter description color */
-  line-height: 1.5; /* Improved readability */
+  margin-bottom: 20px; 
+  color: var(--color-text-light);
+  line-height: 1.5; 
 }
 
 @media (max-width: 600px) {
   .title {
-    font-size: 2.5rem; /* Adjust title size for smaller screens */
+    font-size: 2.5rem; 
   }
 }
 

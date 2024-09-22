@@ -3,7 +3,6 @@ import style from "./Navbar.module.css";
 import { getImageUrl } from "../../utils";
 
 const Navbar = ({ data }) => {
-  // data.navbar.map((item) => console.log(item.navName));
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <nav className={style.navbar}>

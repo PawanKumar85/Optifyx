@@ -5,19 +5,18 @@ import axios from "axios";
 
 const About = () => {
   const [aboutData, setAboutData] = useState([]);
-  const [loading, setLoading] = useState(true); // Initialize loading state
-
+  const [loading, setLoading] = useState(true); 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/about"
         );
-        setAboutData(response.data.data); // Set the data correctly
+        setAboutData(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false); 
       }
     };
     fetchData();
@@ -32,7 +31,7 @@ const About = () => {
           alt="about Image of me"
           className={`${style.aboutImg}`}
         />
-        {loading ? ( // Render loading indicator
+        {loading ? ( 
           <p>Loading...</p>
         ) : (
           <ul className={style.aboutItems}>

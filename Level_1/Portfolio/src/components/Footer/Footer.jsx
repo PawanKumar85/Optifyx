@@ -1,9 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { IoLogoLinkedin } from "react-icons/io5";
-import { IoLogoGithub } from "react-icons/io";
-import { SiMinutemailer } from "react-icons/si";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
-import { RiInstagramFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -14,7 +9,7 @@ export default function Footer() {
     const fetchSocialMediaLinks = async () => {
       try {
         const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/social");
-        setSocialMediaLinks(response.data.data); // Ensure this is an array
+        setSocialMediaLinks(response.data.data); 
       } catch (error) {
         console.error("Error fetching social media links:", error);
       }
@@ -31,7 +26,7 @@ export default function Footer() {
             socialMediaLinks.map((link) => (
               <Link
                 key={link._id}
-                to={link.url} // Assuming url is the field containing the link
+                to={link.url}
                 className="mr-9 text-neutral-200 hover:text-neutral-400"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +40,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="p-1 m-3 text-center text-[#fff] flex justify-center">
-        Version: 1.0.5
+        Version: 5.0.0
       </div>
     </footer>
   );

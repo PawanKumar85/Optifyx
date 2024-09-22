@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./Hero.module.css";
 import { ReactTyped } from "react-typed";
 import axios from "axios";
-import Loader from "../Spinner"; // Assuming you have a Loader component
+import Loader from "../Spinner";
 
 const Hero = () => {
   const [homeData, setHomeData] = useState({});

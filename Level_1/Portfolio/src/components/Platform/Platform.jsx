@@ -12,12 +12,12 @@ const Platform = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/platform");
-        setPlatformData(response.data.data); // Set the data correctly
+        setPlatformData(response.data.data);
       } catch (error) {
         console.error("Error fetching platform data:", error);
-        setError("Failed to load platform data."); // Set error message
+        setError("Failed to load platform data."); 
       } finally {
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false); 
       }
     };
 
@@ -30,15 +30,15 @@ const Platform = () => {
         <div className={style.container}>
           <h1 className={style.title}>Platform</h1>
           {loading ? (
-            <p>Loading...</p> // Loading message or you can use a loader component
+            <p>Loading...</p> 
           ) : error ? (
-            <p className={style.error}>{error}</p> // Display error message
+            <p className={style.error}>{error}</p> 
           ) : platformData.length > 0 ? (
             <div className={style.serviceslist}>
               {platformData.map((item) => (
                 <div key={item._id} className={style.service}>
                   <img
-                    src={item.imageUrl || getImageUrl("fallback-image.png")} // Fallback image if necessary
+                    src={item.imageUrl || getImageUrl("fallback-image.png")} 
                     className={style.image}
                     alt={item.title}
                     loading="lazy"
@@ -57,7 +57,7 @@ const Platform = () => {
               ))}
             </div>
           ) : (
-            <p>No platform data available</p> // No data case
+            <p>No platform data available</p> 
           )}
         </div>
       </div>

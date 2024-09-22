@@ -26,38 +26,6 @@
       "navLink": "project"
     }
   ],
-  "projects": [
-    {
-      "title": "Tic-Tae-Toe",
-      "imageSrc": "projects/Tie-Tac-Toe.png",
-      "skills": [
-        "React",
-        "Bootstrap5",
-        "Node"
-      ],
-      "link": "https://projects-seven-sigma.vercel.app/"
-    },
-    {
-      "title": "Password Generater",
-      "imageSrc": "projects/password-generation.png",
-      "skills": [
-        "React",
-        "Bootstrap5",
-        "Node"
-      ],
-      "demo": "https://password-generater-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
-    },
-    {
-      "title": "To-do List",
-      "imageSrc": "projects/todo.png",
-      "skills": [
-        "React",
-        "tailwind",
-        "Node"
-      ],
-      "demo": "https://todo-list-pawan-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
-    }
-  ],
   "contacts": {
     "title": "Contact",
     "description": "Feel Free to react out!",

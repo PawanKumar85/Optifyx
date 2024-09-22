@@ -1,15 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Projects.module.css";
 import Card from "./Card";
+import Spinner from "../Spinner"; // Import the Spinner component
+import axios from "axios";
 
-const Projects = ({ data }) => {
+const Projects = () => {
+  const [projectData, setProjectData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/v2/portfolio/project"
+        );
+        setProjectData(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Error fetching project data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <Spinner />; // Display the spinner while loading
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <section className={style.container} id="project">
       <h2 className={style.title}>Projects</h2>
       <div className={style.projects}>
-        {data.projects.map((item, index) => (
-          <Card key={index} item={item} />
-        ))}
+        {projectData.length > 0 ? (
+          projectData.map((item) => (
+            <div className={style.projectCard} key={item._id}>
+              <Card item={item} />
+            </div>
+          ))
+        ) : (
+          <p>No projects available.</p>
+        )}
       </div>
     </section>
   );

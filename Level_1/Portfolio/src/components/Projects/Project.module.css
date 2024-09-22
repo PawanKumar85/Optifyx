@@ -16,8 +16,13 @@
 
 .projects {
   margin-top: 20px; /* Reduced top margin for better spacing */
-  display: grid; /* Use grid layout for a more structured look */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid */
-  gap: 30px; /* Increased gap between cards for better spacing */
-  justify-items: center; /* Center items in each grid cell */
+  display: flex; /* Use flexbox for horizontal layout */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px 0; /* Add padding for aesthetics */
+  gap: 30px; /* Space between cards */
+}
+
+.projectCard {
+  flex: 0 0 300px; /* Set fixed width for cards */
+  /* You can add additional styles for the card here */
 }

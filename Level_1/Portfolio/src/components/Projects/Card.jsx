@@ -3,13 +3,13 @@ import { getImageUrl } from "../../utils";
 import style from './Card.module.css';
 
 const Card = ({
-  item: { title, imageSrc, description, skills, demo, source },
+  item: { title, imageUrl, skills, link, source },
 }) => {
   return (
     <div className={style.container}>
       <div className="flex justify-center">
       <img
-        src={getImageUrl(imageSrc)}
+        src={imageUrl}
         alt={`Image of ${title}`}
         className={`${style.image} w-[150px]`}
       />
@@ -24,9 +24,9 @@ const Card = ({
         ))}
       </ol>
       <div className={style.links}>
-        {demo && (
+        {link && (
           <a
-            href={demo}
+            href={link}
             className={`w-full text-center ${style.link}`}
             target="_blank"
             rel="noopener noreferrer" // Security improvement

@@ -3,13 +3,13 @@ import style from "./Experience.module.css";
 import { getImageUrl } from "../../utils";
 import axios from "axios";
 
-const Experience = ({ data }) => {
+const Experience = () => {
   const [skillData, setSkillData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v2/portfolio/skill");
+        const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/skill");
         // Check if the response has the expected structure
         if (response.data && response.data.data) {
           setSkillData(response.data.data); // Use the correct data path

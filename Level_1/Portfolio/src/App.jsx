@@ -14,7 +14,7 @@ import Achievement from "./components/Achievement/Achievement";
 
 
 function App() {
-
+  
   return (
     <div className={style.App}>
       <Navbar data={data} />

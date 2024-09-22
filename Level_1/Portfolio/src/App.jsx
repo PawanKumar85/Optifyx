@@ -9,6 +9,7 @@ import data from "./Data/personalData.json";
 import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact"
 import Footer from "./components/Footer/Footer";
+import Skills from "./components/Experience/Experience";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Hero/>
       <About/>
       <Education/>
+      <Skills />
       <Platform/>
       <Projects/>
       <Contact/>

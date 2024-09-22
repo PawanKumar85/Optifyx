@@ -25,35 +25,5 @@
       "navName": "Projects",
       "navLink": "project"
     }
-  ],
-  "contacts": {
-    "title": "Contact",
-    "description": "Feel Free to react out!",
-    "contactInfo": [
-      {
-        "contactId": 1,
-        "type": "Linkedin",
-        "link": "https://www.linkedin.com/in/pawan-kumar-89402a205",
-        "name": "linkedin.com/PawanKumar85",
-        "icon": "contact/linkedinIcon.png",
-        "alt": "Linkedin Icon"
-      },
-      {
-        "contactId": 2,
-        "type": "github",
-        "link": "https://github.com/PawanKumar85",
-        "name": "github.com/PawanKumar85",
-        "icon": "contact/githubIcon.png",
-        "alt": "Github Icon"
-      }
-    ],
-    "emailInfo": {
-      "type": "email",
-      "emailId": "pawan630703@gmail.com",
-      "name": "pawan@gmail.com",
-      "icon": "contact/emailIcon.png",
-      "alt": "Email Icon"
-    }
-  },
-  "achievement": []
+  ]
 }

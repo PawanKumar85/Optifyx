@@ -13,7 +13,7 @@ export default function Footer() {
   useEffect(() => {
     const fetchSocialMediaLinks = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v2/portfolio/social");
+        const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/social");
         setSocialMediaLinks(response.data.data); // Ensure this is an array
       } catch (error) {
         console.error("Error fetching social media links:", error);

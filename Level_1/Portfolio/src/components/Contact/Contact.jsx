@@ -32,7 +32,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v2/portfolio/contacts",
+        "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/contacts",
         formData
       );
       console.log("Form data submitted:", response.data);

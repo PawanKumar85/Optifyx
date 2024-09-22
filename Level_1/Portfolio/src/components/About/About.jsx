@@ -11,7 +11,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v2/portfolio/about"
+          "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/about"
         );
         setAboutData(response.data.data); // Set the data correctly
       } catch (error) {

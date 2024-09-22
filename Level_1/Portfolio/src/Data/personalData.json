@@ -35,7 +35,7 @@
         "Bootstrap5",
         "Node"
       ],
-      "demo": "https://projects-seven-sigma.vercel.app/"
+      "link": "https://projects-seven-sigma.vercel.app/"
     },
     {
       "title": "Password Generater",
@@ -56,49 +56,6 @@
         "Node"
       ],
       "demo": "https://todo-list-pawan-git-main-pawan-kumars-projects-9eee38c1.vercel.app/"
-    }
-  ],
-  "platform": [
-    {
-      "title": "GeeksGeeks",
-      "imageSrc": "platform/gfg.png",
-      "description": "I have solved over 250 problems, maintained a maximum streak of 107 consecutive days of problem-solving, and participated in 1 coding contest. This experience has significantly enhanced my problem-solving abilities, deepened my understanding of algorithms and data structures, and improved my efficiency in tackling complex coding challenges.",
-      "link": "https://www.geeksforgeeks.org/user/pawan_kumar85440/"
-    },
-    {
-      "title": "Leetcode",
-      "imageSrc": "platform/leetcode.png",
-      "description": "I have solved 253 questions on LeetCode, with a maximum streak of 124 days. Along the way, I’ve earned five badges, including the 100 Days badge, 50 Days badge, and monthly badges for May, April, and March. This progress demonstrates my consistency and determination in problem-solving and algorithmic challenges.",
-      "link": "https://leetcode.com/u/Pawan83033/"
-    },
-    {
-      "title": "HackerRank",
-      "imageSrc": "platform/hackerRank2.jpg",
-      "description": "I have demonstrated versatility across multiple domains, earning 5 stars in both C++ and C, along with 3 stars in Problem Solving and SQL. I have also achieved 2 stars in Python and JavaScript, further expanding my expertise in backend and scripting languages.",
-      "link": "https://www.hackerrank.com/profile/pawan630703"
-    }
-  ],
-  "education": [
-    {
-      "start_date": "August 2018",
-      "end_date": "May 2022",
-      "institution": "University of XYZ",
-      "description": "Bachelor of Science in Computer Science",
-      "image": "https://example.com/your-image-url.jpg"
-    },
-    {
-      "start_date": "September 2022",
-      "end_date": "Present",
-      "institution": "Graduate School of ABC",
-      "description": "Master's in Data Science",
-      "image": "https://example.com/another-image-url.jpg"
-    },
-    {
-      "start_date": "September 2022",
-      "end_date": "Present",
-      "institution": "Graduate School of ABC",
-      "description": "Master's in Data Science",
-      "image": "https://example.com/another-image-url.jpg"
     }
   ],
   "contacts": {

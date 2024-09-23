@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import axios from "axios";
 import { getImageUrl } from "../../utils";
@@ -32,7 +30,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/contacts",
+        "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/contacts",
         formData
       );
       console.log("Form data submitted:", response.data);
@@ -44,8 +42,8 @@ const Contact = () => {
         message: "",
       });
     } catch (err) {
-      console.error("Error submitting form:", err.response.data.message);
-      setError(err.response.data.message);
+      console.error("Error submitting form:", err.response?.data?.message || "Unknown error");
+      setError(err.response?.data?.message || "An error occurred while submitting the form.");
     } finally {
       setIsSubmitting(false);
     }
@@ -54,22 +52,15 @@ const Contact = () => {
   return (
     <section id="contact">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="mx-auto max-w-7xl py-12 md:py-24">
+        <div className="py-12 md:py-24">
           <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
             <div className="flex items-center justify-center">
               <div className="px-2 md:px-12">
-                <p className="text-2xl font-bold text-white md:text-4xl">
-                  Contact Me
-                </p>
-                <p className="mt-4 text-lg text-white">
-                  Our friendly team would love to hear from you.
-                </p>
+                <p className="text-2xl font-bold text-white md:text-4xl">Contact Me</p>
+                <p className="mt-4 text-lg text-white">Our friendly team would love to hear from you.</p>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-4">
                   <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-gray-700"
-                      htmlFor="name"
-                    >
+                    <label className="text-sm font-medium leading-none text-gray-700" htmlFor="name">
                       Name
                     </label>
                     <input
@@ -84,10 +75,7 @@ const Contact = () => {
                   </div>
 
                   <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-gray-700"
-                      htmlFor="email"
-                    >
+                    <label className="text-sm font-medium leading-none text-gray-700" htmlFor="email">
                       Email
                     </label>
                     <input
@@ -102,10 +90,7 @@ const Contact = () => {
                   </div>
 
                   <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-gray-700"
-                      htmlFor="message"
-                    >
+                    <label className="text-sm font-medium leading-none text-gray-700" htmlFor="message">
                       Message
                     </label>
                     <textarea
@@ -118,6 +103,7 @@ const Contact = () => {
                       required
                     />
                   </div>
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -125,11 +111,8 @@ const Contact = () => {
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
-                  {success && (
-                    <p className="mt-4 text-green-500">
-                      Message sent successfully!
-                    </p>
-                  )}
+                  
+                  {success && <p className="mt-4 text-green-500">Message sent successfully!</p>}
                   {error && <p className="mt-4 text-red-500">{error}</p>}
                 </form>
               </div>

@@ -33,11 +33,11 @@ const Hero = () => {
   return (
     <section className={style.container}>
       <div className={style.content}>
-        <span className="text-2xl">Hello, I'm a</span>
+        <span className="text-2xl">Hello, I'm Pawan Kumar</span>
         <div className="flex d-inline-flex">
           <h1 className={style.title}>
             <ReactTyped
-              strings={[" Student", " Coder", " Pawan Kumar"]}
+              strings={[" Student", " Coder", "MERN"]}
               typeSpeed={100}
               loop={true}
             />

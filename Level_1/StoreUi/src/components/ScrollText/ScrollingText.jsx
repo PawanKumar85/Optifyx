@@ -6,7 +6,7 @@ const ScrollingText = () => {
   return (
     <div className="overflow-hidden">
       <div className="animate-scroll text-lg font-bold text-center">
-        Language Used :  &nbsp;&nbsp;&nbsp;&nbsp; React &nbsp;&nbsp;&nbsp;&nbsp; Tailwind CSS &nbsp;&nbsp;&nbsp;&nbsp; Hello World &nbsp;&nbsp;&nbsp;&nbsp; Hello World
+        Language Used :  &nbsp;&nbsp;&nbsp;&nbsp; React &nbsp;&nbsp;&nbsp;&nbsp; Tailwind CSS &nbsp;&nbsp;&nbsp;&nbsp;
       </div>
     </div>
   );

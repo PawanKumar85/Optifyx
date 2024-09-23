@@ -11,7 +11,7 @@ const Platform = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/v2/portfolio/platform");
+        const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/platform");
         setPlatformData(response.data.data);
       } catch (error) {
         console.error("Error fetching platform data:", error);

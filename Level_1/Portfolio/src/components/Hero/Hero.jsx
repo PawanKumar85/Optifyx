@@ -13,7 +13,7 @@ const Hero = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "/api/v2/portfolio/home"
+          "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/home"
         );
         setHomeData(response.data.data[0]);
         setLoading(false);

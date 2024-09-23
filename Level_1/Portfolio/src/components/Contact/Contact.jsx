@@ -32,7 +32,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        import.meta.env.VITE_CONTACT,
+        "/api/v2/portfolio/contacts",
         formData
       );
       console.log("Form data submitted:", response.data);

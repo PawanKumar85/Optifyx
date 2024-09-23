@@ -13,7 +13,7 @@ const Hero = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_HOME
+          "/api/v2/portfolio/home"
         );
         setHomeData(response.data.data[0]);
         setLoading(false);

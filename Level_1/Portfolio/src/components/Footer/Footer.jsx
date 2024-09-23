@@ -8,7 +8,7 @@ export default function Footer() {
   useEffect(() => {
     const fetchSocialMediaLinks = async () => {
       try {
-        const response = await axios.get(import.meta.env.VITE_SOCIAL);
+        const response = await axios.get("/api/v2/portfolio/social");
         setSocialMediaLinks(response.data.data);
       } catch (error) {
         console.error("Error fetching social media links:", error);

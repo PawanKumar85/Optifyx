@@ -8,7 +8,7 @@ const Experience = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(import.meta.env.VITE_SKILLs);
+        const response = await axios.get("/api/v2/portfolio/skill");
         if (response.data && response.data.data) {
           setSkillData(response.data.data);
         } else {

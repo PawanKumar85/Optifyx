@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Projects.module.css";
 import Card from "./Card";
-import Spinner from "../Spinner"; 
+import Spinner from "../Spinner";
 import axios from "axios";
 
 const Projects = () => {
@@ -12,9 +12,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          import.meta.env.VITE_PROJECT
-        );
+        const response = await axios.get("/api/v2/portfolio/project");
         setProjectData(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -27,7 +25,7 @@ const Projects = () => {
   }, []);
 
   if (loading) {
-    return <Spinner />; 
+    return <Spinner />;
   }
 
   if (error) {

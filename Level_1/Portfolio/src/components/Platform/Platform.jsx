@@ -11,7 +11,7 @@ const Platform = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(import.meta.env.VITE_PLATFORM);
+        const response = await axios.get("/api/v2/portfolio/platform");
         setPlatformData(response.data.data);
       } catch (error) {
         console.error("Error fetching platform data:", error);

@@ -13,7 +13,7 @@ const Projects = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/project"
+          import.meta.env.VITE_PROJECT
         );
         setProjectData(response.data.data);
       } catch (error) {

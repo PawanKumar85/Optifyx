@@ -8,8 +8,8 @@ export default function Footer() {
   useEffect(() => {
     const fetchSocialMediaLinks = async () => {
       try {
-        const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/social");
-        setSocialMediaLinks(response.data.data); 
+        const response = await axios.get(import.meta.env.VITE_SOCIAL);
+        setSocialMediaLinks(response.data.data);
       } catch (error) {
         console.error("Error fetching social media links:", error);
       }
@@ -20,18 +20,22 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#04152d] text-center text-white">
-      <div className="container pt-9">
-        <div className="mb-9 flex justify-center">
+      <div className="container pt-9 px-4">
+        <div className="mb-9 flex justify-center flex-wrap">
           {Array.isArray(socialMediaLinks) ? (
             socialMediaLinks.map((link) => (
               <Link
                 key={link._id}
                 to={link.url}
-                className="mr-9 text-neutral-200 hover:text-neutral-400"
+                className="m-3 text-neutral-200 hover:text-neutral-400"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={link.icon} alt={link._id} className="w-[50px] h-[50px]"/>
+                <img
+                  src={link.icon}
+                  alt={link._id}
+                  className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
+                />
               </Link>
             ))
           ) : (

@@ -10,7 +10,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/about"
+          import.meta.env.VITE_ABOUT
         );
         setAboutData(response.data.data);
       } catch (error) {

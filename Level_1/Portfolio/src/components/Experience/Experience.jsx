@@ -8,7 +8,7 @@ const Experience = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/skill");
+        const response = await axios.get(import.meta.env.VITE_SKILLs);
         if (response.data && response.data.data) {
           setSkillData(response.data.data);
         } else {

@@ -9,7 +9,7 @@ const Education = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://portfolio-backend-image-v1.onrender.com/api/v2/portfolio/education"
+          import.meta.env.VITE_EDUCATION
         );
         setEducationData(response.data.data);
       } catch (error) {

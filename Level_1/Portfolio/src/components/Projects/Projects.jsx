@@ -19,7 +19,7 @@ const Projects = () => {
       } else {
         try {
           const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/project"
+            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/project"
           );
           const data = response.data.data;
           setProjectData(data);

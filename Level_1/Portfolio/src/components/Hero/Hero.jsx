@@ -20,7 +20,7 @@ const Hero = () => {
       } else {
         try {
           const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/home"
+            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/home"
           );
           const data = response.data.data[0];
           setHomeData(data);

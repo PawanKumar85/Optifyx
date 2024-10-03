@@ -17,7 +17,7 @@ const About = () => {
       } else {
         try {
           const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/about"
+            "https://portfolio-backend-image-v3.onrender.comhttps://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/about"
           );
           const data = response.data.data;
           setAboutData(data);

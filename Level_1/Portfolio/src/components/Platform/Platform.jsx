@@ -19,7 +19,7 @@ const Platform = () => {
       } else {
         try {
           const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/platform"
+            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/platform"
           );
           const data = response.data.data;
           setPlatformData(data);

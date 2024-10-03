@@ -17,7 +17,7 @@ const Education = () => {
       } else {
         try {
           const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/education"
+            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/education"
           );
           const data = response.data.data;
           setEducationData(data);

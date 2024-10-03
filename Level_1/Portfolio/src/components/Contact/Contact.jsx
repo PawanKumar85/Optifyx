@@ -28,14 +28,47 @@ const Contact = () => {
     setError(null);
     setSuccess(false);
 
+    // Trim the message before validation
+    const trimmedMessage = formData.message.trim();
+
+    // Validate inputs
+    if (formData.name.trim().length < 2) {
+      setError("Name should be at least 2 characters long");
+      setIsSubmitting(false);
+      return;
+    }
+    
+    if (!formData.email) {
+      setError("Email is required");
+      setIsSubmitting(false);
+      return;
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        setError("Invalid email format");
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
+    if (trimmedMessage.length < 10) {
+      setError("Message should be at least 10 characters long");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await axios.post(
-        "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/contacts",
-        formData
+        "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/contacts",
+        {
+          ...formData,
+          message: trimmedMessage, // Send trimmed message
+        }
       );
       console.log("Form data submitted:", response.data);
       setSuccess(true);
-      
+
+      // Clear form fields after submission
       setFormData({
         name: "",
         email: "",

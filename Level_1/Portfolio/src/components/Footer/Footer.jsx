@@ -1,52 +1,56 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { FaGithub, FaLinkedin, FaFacebook,FaInstagram } from "react-icons/fa"; // Import icons from react-icons
+import { SiMinutemailer } from "react-icons/si";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
-export default function Footer() {
-  const [socialMediaLinks, setSocialMediaLinks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchSocialMediaLinks = async () => {
-      const cachedLinks = localStorage.getItem("socialMediaLinks");
-
-      if (cachedLinks) {
-        setSocialMediaLinks(JSON.parse(cachedLinks)); // Use cached data
-        setLoading(false);
-      } else {
-        try {
-          const response = await axios.get(
-            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/social"
-          );
-          const data = response.data.data;
-          setSocialMediaLinks(data);
-          localStorage.setItem("socialMediaLinks", JSON.stringify(data)); // Cache data in localStorage
-        } catch (error) {
-          console.error("Error fetching social media links:", error);
-          setError("Failed to load social media links.");
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchSocialMediaLinks();
-  }, []);
-
-  if (loading) {
-    return <p className="text-white">Loading...</p>; // Display loading state
-  }
-
-  if (error) {
-    return <p className="text-red-500">{error}</p>; // Show error message
-  }
+const Footer = () => {
+  // Static array of social media links with icons
+  const socialMediaLinks = [
+    {
+      _id: "1",
+      name: "GitHub",
+      url: "https://github.com/PawanKumar85",
+      icon: <FaGithub className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    {
+      _id: "2",
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/pawankr85/",
+      icon: <FaLinkedin className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    {
+      _id: "3",
+      name: "Twitter",
+      url: "https://x.com/pawansoni630703",
+      icon: <FaSquareXTwitter className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    {
+      _id: "4",
+      name: "Email",
+      url: "mailto:pawan630703@gmail.com",
+      icon: <SiMinutemailer className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    {
+      _id: "5",
+      name: "Facebook",
+      url: "https://m.facebook.com/profile.php?id=100010037854634",
+      icon: <FaFacebook className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    {
+      _id: "6",
+      name: "Instagram",
+      url: "https://www.instagram.com/pawan630703?igsh=MWF0c2Y3d3ozNnhxZg==",
+      icon: <FaInstagram  className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]" />, // Using icon component
+    },
+    // Add more links as needed
+  ];
 
   return (
     <footer className="bg-[#04152d] text-center text-white">
       <div className="container pt-9 px-4">
         <div className="mb-9 flex justify-center flex-wrap">
-          {Array.isArray(socialMediaLinks) && socialMediaLinks.length > 0 ? (
+          {socialMediaLinks.length > 0 ? (
             socialMediaLinks.map((link) => (
               <Link
                 key={link._id}
@@ -55,11 +59,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src={link.icon}
-                  alt={`Icon for ${link.name}`}
-                  className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
-                />
+                {link.icon} {/* Render the icon component */}
               </Link>
             ))
           ) : (
@@ -72,4 +72,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

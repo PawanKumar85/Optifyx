@@ -1,21 +1,36 @@
 import React, { useEffect, useState } from "react";
 import style from "./Experience.module.css";
 import axios from "axios";
+import Loader from "../Spinner"; // Assuming you have a Loader component
 
 const Experience = () => {
   const [skillData, setSkillData] = useState([]);
+  const [loading, setLoading] = useState(true); // Add a loading state
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get("https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/skill");
-        if (response.data && response.data.data) {
-          setSkillData(response.data.data);
-        } else {
-          console.error("Unexpected response structure:", response.data);
+      const cachedData = localStorage.getItem("skillData");
+
+      if (cachedData) {
+        setSkillData(JSON.parse(cachedData));
+        setLoading(false); // Stop loading when cached data is available
+      } else {
+        try {
+          const response = await axios.get(
+            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/skill"
+          );
+          if (response.data && response.data.data) {
+            const data = response.data.data;
+            setSkillData(data);
+            localStorage.setItem("skillData", JSON.stringify(data)); // Cache the data
+          } else {
+            console.error("Unexpected response structure:", response.data);
+          }
+        } catch (error) {
+          console.error("Error fetching skill data:", error);
+        } finally {
+          setLoading(false); // Stop loading once data is fetched
         }
-      } catch (error) {
-        console.error("Error fetching skill data:", error);
       }
     };
     fetchData();
@@ -25,41 +40,20 @@ const Experience = () => {
     <section className={style.container} id="experience">
       <h2 className={style.title}>Skills</h2>
       <div className={style.content}>
-        <div className={style.skills}>
-          {skillData.map((skill, index) => {
-            return (
+        {loading ? (
+          <Loader /> // Display loader while data is loading
+        ) : (
+          <div className={style.skills}>
+            {skillData.map((skill, index) => (
               <div key={skill.skillId || index} className={style.skill}>
                 <div className={style.skillImagContainer}>
                   <img src={skill.imageUrl} alt={skill.title} />
                 </div>
                 <p>{skill.title}</p>
               </div>
-            );
-          })}
-        </div>
-        {/* Uncomment if you want to display history as well
-        <ul className={style.history}>
-          {history.map((historyItem, id) => {
-            return (
-              <li key={id} className={style.historyItem}>
-                <img
-                  src={getImageUrl(historyItem.imageSrc)}
-                  alt={`${historyItem.organisation} logo`}
-                />
-                <div className={style.historyItemDetails}>
-                  <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
-                  <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
-                  <ul>
-                    {historyItem.experiences.map((item, id) => {
-                      return <li key={id}>{item}</li>;
-                    })}
-                  </ul>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-        */}
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

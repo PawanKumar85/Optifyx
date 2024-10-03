@@ -6,17 +6,27 @@ import axios from "axios";
 const About = () => {
   const [aboutData, setAboutData] = useState([]);
   const [loading, setLoading] = useState(true); 
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/about"
-        );
-        setAboutData(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false); 
+      const cachedData = localStorage.getItem("aboutData");
+
+      if (cachedData) {
+        setAboutData(JSON.parse(cachedData)); // Use cached data
+        setLoading(false);
+      } else {
+        try {
+          const response = await axios.get(
+            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/about"
+          );
+          const data = response.data.data;
+          setAboutData(data);
+          localStorage.setItem("aboutData", JSON.stringify(data)); // Store data in cache
+          setLoading(false);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          setLoading(false);
+        }
       }
     };
     fetchData();

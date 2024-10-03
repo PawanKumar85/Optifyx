@@ -9,14 +9,25 @@ export default function Footer() {
 
   useEffect(() => {
     const fetchSocialMediaLinks = async () => {
-      try {
-        const response = await axios.get("https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/social");
-        setSocialMediaLinks(response.data.data);
-      } catch (error) {
-        console.error("Error fetching social media links:", error);
-        setError("Failed to load social media links.");
-      } finally {
+      const cachedLinks = localStorage.getItem("socialMediaLinks");
+
+      if (cachedLinks) {
+        setSocialMediaLinks(JSON.parse(cachedLinks)); // Use cached data
         setLoading(false);
+      } else {
+        try {
+          const response = await axios.get(
+            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/social"
+          );
+          const data = response.data.data;
+          setSocialMediaLinks(data);
+          localStorage.setItem("socialMediaLinks", JSON.stringify(data)); // Cache data in localStorage
+        } catch (error) {
+          console.error("Error fetching social media links:", error);
+          setError("Failed to load social media links.");
+        } finally {
+          setLoading(false);
+        }
       }
     };
 
@@ -24,11 +35,11 @@ export default function Footer() {
   }, []);
 
   if (loading) {
-    return <p className="text-white">Loading...</p>;
+    return <p className="text-white">Loading...</p>; // Display loading state
   }
 
   if (error) {
-    return <p className="text-red-500">{error}</p>;
+    return <p className="text-red-500">{error}</p>; // Show error message
   }
 
   return (
@@ -46,7 +57,7 @@ export default function Footer() {
               >
                 <img
                   src={link.icon}
-                  alt={`Icon for ${link.name}`} // Assuming link has a name property
+                  alt={`Icon for ${link.name}`}
                   className="w-[40px] h-[40px] md:w-[50px] md:h-[50px]"
                 />
               </Link>
@@ -57,7 +68,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="p-1 m-3 text-center text-[#fff] flex justify-center">
-        Version: 5.0.0
+        Version: 5.5.0
       </div>
     </footer>
   );

@@ -11,25 +11,37 @@ const Projects = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get("https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/project");
-        setProjectData(response.data.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("Error fetching project data");
-      } finally {
-        setLoading(false);
+      const cachedData = localStorage.getItem("projectData");
+
+      if (cachedData) {
+        setProjectData(JSON.parse(cachedData)); // Use cached data
+        setLoading(false); // Stop loading
+      } else {
+        try {
+          const response = await axios.get(
+            "https://portfolio-backend-image-v2.onrender.com/api/v2/portfolio/project"
+          );
+          const data = response.data.data;
+          setProjectData(data);
+          localStorage.setItem("projectData", JSON.stringify(data)); // Cache the data
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          setError("Error fetching project data.");
+        } finally {
+          setLoading(false);
+        }
       }
     };
+
     fetchData();
   }, []);
 
   if (loading) {
-    return <Spinner />;
+    return <Spinner />; // Display a spinner while loading
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p>{error}</p>; // Show an error message if there's an error
   }
 
   return (
@@ -43,7 +55,7 @@ const Projects = () => {
             </div>
           ))
         ) : (
-          <p>No projects available.</p>
+          <p>No projects available.</p> // Show this if no projects exist
         )}
       </div>
     </section>

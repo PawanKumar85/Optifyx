@@ -47,7 +47,7 @@ const Projects = () => {
   return (
     <section className={style.container} id="project">
       <h2 className={style.title}>Projects</h2>
-      <div className={`${style.projects} overflow-x-auto`}>
+      <div className={style.projects}>
         {projectData.length > 0 ? (
           projectData.map((item) => (
             <div className={style.projectCard} key={item._id}>

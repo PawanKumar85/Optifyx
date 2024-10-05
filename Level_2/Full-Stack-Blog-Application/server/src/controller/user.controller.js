@@ -1,11 +1,13 @@
 import User from "../model/user.model.js";
 import emailValidator from "email-validator";
 import jwt from "jsonwebtoken";
-import { sendMail } from "../helper/email.js";
 import { getDeviceInfo } from "../helper/device-info.js";
-import { sendWelcomeEmail } from "../helper/greetingUser.js";
+import {
+  sendWelcomeEmail,
+  sendAdminNotification,
+  sendLoginAlert,
+} from "../helper/emailService.js";
 
-// Generate access and refresh tokens
 const generateAccessAndRefereshToken = async (userId) => {
   try {
     const user = await User.findById(userId);
@@ -24,7 +26,6 @@ const generateAccessAndRefereshToken = async (userId) => {
   }
 };
 
-// User signup
 export const signUp = async (req, res) => {
   try {
     const { userName, fullName, email, password } = req.body;
@@ -63,6 +64,7 @@ export const signUp = async (req, res) => {
     await newUser.save();
 
     await sendWelcomeEmail(newUser.email, newUser.fullName, newUser.email);
+    await sendAdminNotification(newUser);
 
     return res.status(200).json({
       success: true,
@@ -77,10 +79,9 @@ export const signUp = async (req, res) => {
   }
 };
 
-// Get all users
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select("-password -refreshToken"); // Exclude the password field
+    const users = await User.find().select("-password -refreshToken");
     const count = users.length;
 
     if (count === 0) {
@@ -105,7 +106,6 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-// User login
 export const login = async (req, res) => {
   try {
     const { userName, email, password } = req.body;
@@ -151,7 +151,7 @@ export const login = async (req, res) => {
 
     const data = await getDeviceInfo();
 
-    await sendMail(
+    await sendLoginAlert(
       loggedInUser.email,
       "Security Alert",
       data.address,
@@ -176,7 +176,6 @@ export const login = async (req, res) => {
   }
 };
 
-// User logout
 export const logout = async (req, res) => {
   try {
     await User.findByIdAndUpdate(
@@ -213,7 +212,6 @@ export const logout = async (req, res) => {
   }
 };
 
-// Refresh access token
 export const refreshAccessToken = async (req, res) => {
   try {
     const incomingRefreshToken =

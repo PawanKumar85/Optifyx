@@ -22,10 +22,14 @@ app.use(
 app.use(cookieParser());
 app.use("/api/v2", userRoute);
 
-
 // testing routes
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  const ip = getClientIp(req);
+
+  res.json({
+    success: true,
+    message: `Hello, World! You are accessing this server from IP address ${ip}`,
+  });
 });
 
 app.listen(PORT, () => {

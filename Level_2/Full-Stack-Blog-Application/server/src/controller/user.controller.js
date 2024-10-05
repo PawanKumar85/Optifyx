@@ -3,6 +3,7 @@ import emailValidator from "email-validator";
 import jwt from "jsonwebtoken";
 import { sendMail } from "../helper/email.js";
 import { getDeviceInfo } from "../helper/device-info.js";
+import { sendWelcomeEmail } from "../helper/greetingUser.js";
 
 // Generate access and refresh tokens
 const generateAccessAndRefereshToken = async (userId) => {
@@ -60,6 +61,8 @@ export const signUp = async (req, res) => {
     });
 
     await newUser.save();
+
+    await sendWelcomeEmail(newUser.email, newUser.fullName, newUser.email);
 
     return res.status(200).json({
       success: true,

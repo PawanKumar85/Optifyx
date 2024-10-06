@@ -29,6 +29,7 @@ const generateAccessAndRefereshToken = async (userId) => {
 export const signUp = async (req, res) => {
   try {
     const { userName, fullName, email, password } = req.body;
+    const start = Date.now();
     if (!(userName && fullName && email && password)) {
       return res.status(400).json({
         success: false,
@@ -44,7 +45,10 @@ export const signUp = async (req, res) => {
     }
 
     const existingUser = await User.findOne({
-      $or: [{ userName }, { email }],
+      $or: [
+        { userName: userName.toLowerCase() },
+        { email: email.toLowerCase() },
+      ],
     });
 
     if (existingUser) {
@@ -63,8 +67,14 @@ export const signUp = async (req, res) => {
 
     await newUser.save();
 
-    await sendWelcomeEmail(newUser.email, newUser.fullName, newUser.email);
-    await sendAdminNotification(newUser);
+    const emailPromises = [
+      sendWelcomeEmail(newUser.email, newUser.fullName, newUser.email),
+      sendAdminNotification(newUser),
+    ];
+    await Promise.all(emailPromises);
+
+    const end = Date.now();
+    console.log(`Signup API call duration: ${(end - start) / 1000}s`);
 
     return res.status(200).json({
       success: true,
@@ -110,6 +120,8 @@ export const login = async (req, res) => {
   try {
     const { userName, email, password } = req.body;
 
+    const start = Date.now();
+
     if ((!email || !userName) && !password) {
       return res.status(400).json({
         success: false,
@@ -118,7 +130,10 @@ export const login = async (req, res) => {
     }
 
     const user = await User.findOne({
-      $or: [{ userName }, { email }],
+      $or: [
+        { userName: userName?.toLowerCase() },
+        { email: email?.toLowerCase() },
+      ],
     });
 
     if (!user) {
@@ -151,13 +166,18 @@ export const login = async (req, res) => {
 
     const data = await getDeviceInfo();
 
-    await sendLoginAlert(
+    sendLoginAlert(
       loggedInUser.email,
       "Security Alert",
       data.address,
       data.ipAddress,
       data.platform
-    );
+    ).catch((error) => console.error("Error sending login alert:", error));
+
+    // End time for tracking API performance
+    const end = Date.now();
+    console.log(`Login API call duration: ${(end - start) / 1000}s`);
+
     return res
       .status(200)
       .cookie("accessToken", accessToken, options)

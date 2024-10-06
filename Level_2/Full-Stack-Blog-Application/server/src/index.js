@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/database.js";
 import userRoute from "./routes/user.routes.js";
+import blogRoute from "./routes/blog.routes.js";
 import cookieParser from "cookie-parser";
 dotenv.config();
 
@@ -20,7 +21,9 @@ app.use(
   })
 );
 app.use(cookieParser());
+
 app.use("/api/v2", userRoute);
+app.use("/api/v2",blogRoute);
 
 // testing routes
 app.get("/", (req, res) => {

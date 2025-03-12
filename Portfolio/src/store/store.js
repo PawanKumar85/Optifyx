@@ -3,6 +3,7 @@ import navReducer from "./navbarSlice";
 import heroReducer from "./homeSlice";
 import aboutReducer from "./aboutSlice";
 import educationReducer from "./educationSlice";
+import skillReducer from "./skillSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     hero: heroReducer,
     about: aboutReducer,
     education: educationReducer,
+    skill: skillReducer,
   },
 });
 

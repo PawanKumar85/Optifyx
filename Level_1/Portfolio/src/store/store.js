@@ -1,9 +1,11 @@
-import { configureStore} from "@reduxjs/toolkit";
-import portfolioReducer from "./portfolioReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import navReducer from "./navbarSlice";
+import heroReducer from "./homeSlice";
 
 const store = configureStore({
   reducer: {
-    menu: portfolioReducer,
+    menu: navReducer,
+    hero: heroReducer,
   },
 });
 

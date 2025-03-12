@@ -4,7 +4,7 @@ const initialState = {
   isOpen: false,
 };
 
-const portfolioSlice = createSlice({
+const navbarSlice = createSlice({
   name: "menu",
   initialState,
   reducers: {
@@ -17,5 +17,5 @@ const portfolioSlice = createSlice({
   },
 });
 
-export const { toggleMenu, closeMenu } = portfolioSlice.actions;
-export default portfolioSlice.reducer;
+export const { toggleMenu, closeMenu } = navbarSlice.actions;
+export default navbarSlice.reducer;

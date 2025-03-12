@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./About.module.css";
 import { getImageUrl } from "../../utils";
 import axios from "axios";

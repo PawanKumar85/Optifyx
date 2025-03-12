@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import style from "./Navbar.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu, closeMenu } from "../../store/portfolioReducer";
+import { toggleMenu, closeMenu } from "../../store/navbarSlice";
 import { getImageUrl } from "../../utils";
 import { Link } from "react-router-dom";
 

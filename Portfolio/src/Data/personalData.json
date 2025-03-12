@@ -21,6 +21,10 @@
     {
       "navName": "Projects",
       "navLink": "project"
+    },
+    {
+      "navName": "Login",
+      "navLink": "auth/login"
     }
   ]
 }

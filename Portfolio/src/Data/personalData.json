@@ -23,8 +23,8 @@
       "navLink": "project"
     },
     {
-      "navName": "Login",
-      "navLink": "auth/login"
+      "navName" : "Login",
+      "navLink" : "auth/login"
     }
   ]
 }

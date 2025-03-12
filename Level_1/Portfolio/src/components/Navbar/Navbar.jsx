@@ -1,22 +1,20 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import PropTypes from "prop-types"; // Prop validation
+import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import style from "./Navbar.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu, closeMenu } from "../../store/portfolioReducer";
 import { getImageUrl } from "../../utils";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ data }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const dispatch = useDispatch();
+  const menuOpen = useSelector((state) => state.menu.isOpen);
 
-  // Toggle menu function
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((prev) => !prev);
-  }, []);
-
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMenuOpen(false);
+        dispatch(closeMenu());
       }
     };
 
@@ -27,17 +25,17 @@ const Navbar = ({ data }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [menuOpen]);
+  }, [menuOpen, dispatch]);
 
   return (
     <nav className={style.navbar}>
-      <a href="/" className={style.title}>
+      <Link href="/" className={style.title}>
         {data?.portfolio}
-      </a>
+      </Link>
       <div className={style.menu} ref={menuRef}>
         <button
           className={style.menuBtn}
-          onClick={toggleMenu}
+          onClick={() => dispatch(toggleMenu())}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           <img
@@ -52,7 +50,10 @@ const Navbar = ({ data }) => {
         <ul className={`${style.menuItems} ${menuOpen ? style.menuOpen : ""}`}>
           {data?.navbar?.map((item, index) => (
             <li key={index}>
-              <a href={`#${item.navLink}`} onClick={() => setMenuOpen(false)}>
+              <a
+                href={`#${item.navLink}`}
+                onClick={() => dispatch(closeMenu())}
+              >
                 {item.navName}
               </a>
             </li>

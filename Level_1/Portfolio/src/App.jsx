@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -10,6 +9,8 @@ import Education from "./components/Education/Education";
 import Contact from "./components/Contact/Contact"
 import Footer from "./components/Footer/Footer";
 import Skills from "./components/Experience/Experience";
+
+
 
 
 function App() {

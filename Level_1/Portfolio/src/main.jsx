@@ -1,4 +1,3 @@
-import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,22 +5,16 @@ import "@fontsource/outfit";
 import "@fontsource/roboto";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import Spinner from "./components/Spinner.jsx";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
-// Lazy load your App component
-const App = lazy(() => import("./App.jsx"));
+import App from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <Suspense
-      fallback={
-        <div>
-          <Spinner />
-        </div>
-      }
-    >
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
       <Toaster />
-    </Suspense>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
 );

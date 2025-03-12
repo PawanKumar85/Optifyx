@@ -2,65 +2,41 @@ import { Suspense, lazy } from "react";
 import style from "./App.module.css";
 import data from "./Data/personalData.json";
 
+// Lazy Load Components
 const Hero = lazy(() => import("./components/Hero/Hero"));
 const About = lazy(() => import("./components/About/About"));
 const Education = lazy(() => import("./components/Education/Education"));
 const Skills = lazy(() => import("./components/Skill/Skill"));
+const Platform = lazy(() => import("./components/Platform/Platform"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
 
 import Navbar from "./components/Navbar/Navbar";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Platform from "./components/Platform/Platform";
-import Projects from "./components/Projects/Projects";
+
+// Skeleton Loader
+const Loader = () => (
+  <div className="flex justify-center items-center h-[300px]">
+    <span className="loading loading-ball loading-xl text-primary"></span>
+  </div>
+);
 
 function App() {
   return (
     <div className={style.App}>
       <Navbar data={data} />
-      <Suspense
-        fallback={
-          <div className="skeleton h-64 w-full ">
-            <span className="loading loading-ball loading-xl text-primary"></span>
-          </div>
-        }
-      >
+
+      {/* Wrap Everything in a Single Suspense */}
+      <Suspense fallback={<Loader />}>
         <Hero />
-      </Suspense>
-
-      <Suspense
-        fallback={
-          <div className="skeleton h-64 w-full ">
-            <span className="loading loading-ball loading-xl text-primary"></span>
-          </div>
-        }
-      >
         <About />
-      </Suspense>
-
-      <Suspense
-        fallback={
-          <div className="skeleton h-64 w-full ">
-            <span className="loading loading-ball loading-xl text-primary"></span>
-          </div>
-        }
-      >
         <Education />
-      </Suspense>
-
-      <Suspense
-        fallback={
-          <div className="skeleton h-64 w-full ">
-            <span className="loading loading-ball loading-xl text-primary"></span>
-          </div>
-        }
-      >
         <Skills />
+        <Platform />
+        <Projects />
+        <Contact />
+        <Footer />
       </Suspense>
-
-      <Platform />
-      <Projects />
-      <Contact />
-      <Footer />
     </div>
   );
 }

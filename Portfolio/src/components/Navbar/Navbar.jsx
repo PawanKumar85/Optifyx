@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import style from "./Navbar.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,51 +11,73 @@ const Navbar = ({ data }) => {
   const dispatch = useDispatch();
   const menuOpen = useSelector((state) => state.menu.isOpen);
 
+  // Memoized Icons
+  const menuIcon = getImageUrl("nav/menuIcon.png");
+  const closeIcon = getImageUrl("nav/closeIcon.png");
+
+  // Close menu on click outside
   useEffect(() => {
+    if (!menuOpen) return;
+
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         dispatch(closeMenu());
       }
     };
 
-    if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    const handleKeyPress = (event) => {
+      if (event.key === "Escape") {
+        dispatch(closeMenu());
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyPress);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyPress);
     };
   }, [menuOpen, dispatch]);
 
+  // Smooth Scroll Handler
+  const handleScroll = useCallback(
+    (id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        dispatch(closeMenu());
+      }
+    },
+    [dispatch]
+  );
+
   return (
-    <nav className={style.navbar}>
-      <Link href="/" className={style.title}>
+    <nav className={`${style.navbar}`}>
+      <Link to="/" className={`${style.title} space-mono-bold`}>
         {data?.portfolio}
       </Link>
+
       <div className={style.menu} ref={menuRef}>
+        {/* Menu Toggle Button */}
         <button
           className={style.menuBtn}
           onClick={() => dispatch(toggleMenu())}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          <img
-            src={
-              menuOpen
-                ? getImageUrl("nav/closeIcon.png")
-                : getImageUrl("nav/menuIcon.png")
-            }
-            alt={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          />
+          <img src={menuOpen ? closeIcon : menuIcon} alt="Menu icon" />
         </button>
+
+        {/* Menu Items */}
         <ul className={`${style.menuItems} ${menuOpen ? style.menuOpen : ""}`}>
           {data?.navbar?.map((item, index) => (
             <li key={index}>
-              <a
-                href={`#${item.navLink}`}
-                onClick={() => dispatch(closeMenu())}
+              <button
+                onClick={() => handleScroll(item.navLink)}
+                className="space-mono-regular"
               >
                 {item.navName}
-              </a>
+              </button>
             </li>
           ))}
         </ul>

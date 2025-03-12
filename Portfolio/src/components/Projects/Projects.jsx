@@ -1,63 +1,134 @@
-import React, { useEffect, useState } from "react";
-import style from "./Projects.module.css";
-import Card from "./Card";
-import Spinner from "../Spinner";
-import axios from "axios";
+import { useEffect, useRef, useState, useMemo, Suspense, lazy } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProjectData } from "../../store/projectSlice";
+import style from "./Project.module.css";
+import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Lazy Loaded Components
+const Card = lazy(() => import("./Card"));
+const Spinner = lazy(() => import("../Spinner"));
 
 const Projects = () => {
-  const [projectData, setProjectData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const {
+    data: projectData,
+    loading,
+    error,
+  } = useSelector((state) => state.projects);
+  const scrollRef = useRef(null);
+  const [filter, setFilter] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      const cachedData = localStorage.getItem("projectData");
+    dispatch(fetchProjectData());
+  }, [dispatch]);
 
-      if (cachedData) {
-        setProjectData(JSON.parse(cachedData)); // Use cached data
-        setLoading(false); // Stop loading
-      } else {
-        try {
-          const response = await axios.get(
-            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/project"
-          );
-          const data = response.data.data;
-          setProjectData(data);
-          localStorage.setItem("projectData", JSON.stringify(data)); // Cache the data
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setError("Error fetching project data.");
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth / 1.5;
+      scrollRef.current.scrollTo({
+        left:
+          direction === "left"
+            ? scrollLeft - scrollAmount
+            : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <Spinner />; // Display a spinner while loading
-  }
-
-  if (error) {
-    return <p>{error}</p>; // Show an error message if there's an error
-  }
+  const filteredProjects = useMemo(() => {
+    let projects =
+      filter === "All"
+        ? projectData
+        : projectData.filter((p) => p.category === filter);
+    return projects.filter((p) =>
+      p.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [filter, projectData, searchQuery]);
 
   return (
     <section className={style.container} id="project">
-      <h2 className={style.title}>Projects</h2>
-      <div className={style.projects}>
-        {projectData.length > 0 ? (
-          projectData.map((item) => (
-            <div className={style.projectCard} key={item._id}>
-              <Card item={item} />
+      <h2 className="space-mono-bold-italic">Projects</h2>
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-6xl mx-auto p-6 overflow-hidden"
+      >
+        <div className="relative flex items-center mb-6 w-full max-w-lg mx-auto bg-white shadow-md rounded-full px-5 py-2">
+          <Search size={20} className="text-gray-500 mr-3" />
+          <input
+            type="text"
+            placeholder="Search projects..."
+            className="w-full outline-none bg-transparent text-gray-800 space-mono-regular"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
+        <div className="flex justify-center gap-3 mb-6 flex-wrap">
+          {["All", "Frontend", "Backend", "Full Stack"].map((category) => (
+            <button
+              key={category}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                filter === category
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-700 hover:bg-gray-300 space-mono-regular"
+              }`}
+              onClick={() => setFilter(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <Suspense fallback={<p className="text-center">Loading...</p>}>
+          {loading ? (
+            <Spinner />
+          ) : error ? (
+            <p className="text-center text-red-500">{error}</p>
+          ) : filteredProjects.length > 0 ? (
+            <div className="relative">
+              <button
+                className="absolute left-0 top-1/2 -translate-y-1/2 p-2 shadow-lg rounded-full hidden md:flex"
+                onClick={() => scroll("left")}
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <div
+                ref={scrollRef}
+                className="flex gap-4 overflow-x-auto scroll-smooth p-4 snap-x snap-mandatory no-scrollbar w-full"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  overflowX: "hidden",
+                }}
+              >
+                {filteredProjects.map((item) => (
+                  <div
+                    key={item._id}
+                    className="min-w-[300px] snap-center flex-shrink-0"
+                  >
+                    <Card item={item} />
+                  </div>
+                ))}
+              </div>
+
+              <button
+                className="absolute right-0 top-1/2 -translate-y-1/2 p-2 shadow-lg rounded-full hidden md:flex"
+                onClick={() => scroll("right")}
+              >
+                <ChevronRight size={24} />
+              </button>
             </div>
-          ))
-        ) : (
-          <p>No projects available.</p> // Show this if no projects exist
-        )}
-      </div>
+          ) : (
+            <p className="text-center text-gray-500">No projects available.</p>
+          )}
+        </Suspense>
+      </motion.section>
     </section>
   );
 };

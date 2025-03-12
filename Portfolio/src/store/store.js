@@ -6,6 +6,7 @@ import educationReducer from "./educationSlice";
 import skillReducer from "./skillSlice";
 import platformSlice from "./platformSlice";
 import projectReducer from "./projectSlice";
+import contactReducer from "./contactSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     skill: skillReducer,
     platform: platformSlice,
     projects: projectReducer,
+    contact: contactReducer,
   },
 });
 

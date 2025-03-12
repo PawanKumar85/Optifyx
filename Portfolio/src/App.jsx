@@ -3,9 +3,9 @@ import style from "./App.module.css";
 import data from "./Data/personalData.json";
 
 const Hero = lazy(() => import("./components/Hero/Hero"));
+const About = lazy(() => import("./components/About/About"));
 
 import Navbar from "./components/Navbar/Navbar";
-import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Education from "./components/Education/Education";
 import Footer from "./components/Footer/Footer";
@@ -27,7 +27,16 @@ function App() {
         <Hero />
       </Suspense>
 
-      <About />
+      <Suspense
+        fallback={
+          <div className="skeleton h-64 w-full ">
+            <span className="loading loading-ball loading-xl text-primary"></span>
+          </div>
+        }
+      >
+        <About />
+      </Suspense>
+      
       <Education />
       <Skills />
       <Platform />

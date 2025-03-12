@@ -22,9 +22,9 @@ const Hero = () => {
       ) : (
         <>
           <div className={style.content}>
-            <span className="text-2xl">{text}</span>
+            <span className="text-2xl space-mono-bold">{text}</span>
             <div className="flex d-inline-flex">
-              <h1 className={style.title}>
+              <h1 className="space-mono-bold">
                 <ReactTyped
                   strings={["Student", "Coder", "MERN"]}
                   typeSpeed={100}
@@ -32,19 +32,21 @@ const Hero = () => {
                 />
               </h1>
             </div>
-            <p className={style.desc}>{homeData?.bio}</p>
+            <p className="space-mono-regular text-2xl">
+              {homeData?.bio}
+            </p>
             <div className="flex space-x-5">
               <a
                 href="#contact"
-                className={`${style.contactBtn} text-decoration-none`}
+                className={`${style.contactBtn} text-decoration-none space-mono-bold-italic border px-4 py-2 rounded`}
               >
-                Contact Me
+                Contact
               </a>
               {homeData?.resumeUrl && (
                 <a
                   target="_blank"
                   href={homeData.resumeUrl}
-                  className={`${style.contactBtn} text-decoration-none`}
+                  className={`${style.contactBtn} text-decoration-none space-mono-bold-italic border px-4 py-2 rounded`}
                   download
                 >
                   Download CV

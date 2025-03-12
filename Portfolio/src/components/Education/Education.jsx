@@ -1,59 +1,37 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 import "./Education.css";
-import axios from "axios";
-import Loader from "../Spinner"; // Assuming you have a Loader component
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEducationData } from "../../store/educationSlice";
+import { lazy, Suspense } from "react";
 
+const EducationList = lazy(() => import("./EducationList"));
 const Education = () => {
-  const [educationData, setEducationData] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const dispatch = useDispatch();
+  const { data: educationData } = useSelector((state) => state.education);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const cachedData = localStorage.getItem("educationData");
-
-      if (cachedData) {
-        setEducationData(JSON.parse(cachedData));
-        setLoading(false); // Stop loading when cached data is available
-      } else {
-        try {
-          const response = await axios.get(
-            "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/education"
-          );
-          const data = response.data.data;
-          setEducationData(data);
-          localStorage.setItem("educationData", JSON.stringify(data));
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        } finally {
-          setLoading(false); // Stop loading once data is fetched
-        }
-      }
-    };
-    fetchData();
-  }, []);
+    dispatch(fetchEducationData());
+  }, [dispatch]);
 
   return (
     <section className="education" id="education">
-      <h2 className="heading">Education</h2>
-      {loading ? ( // Display loader when data is still loading
-        <Loader />
-      ) : (
-        <div className="timeline-items">
-          {educationData.map((item) => (
-            <div className="timeline-item" key={item._id}>
-              <div className="timeline-dot"></div>
-              <div className="timeline-date">{item.duration}</div>
-              <div className="timeline-content">
-                <h3>{item.title}</h3>
-                <span>
-                  {item.course} : {item.courseID}
-                </span>
-                <p>{item.college}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      <motion.h2
+        className="heading space-mono-bold-italic"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Education
+      </motion.h2>
+
+      <Suspense
+        fallback={
+          <div className="skeleton h-32 w-full bg-gray-700 rounded-2xl"></div>
+        }
+      >
+        <EducationList educationData={educationData} />
+      </Suspense>
     </section>
   );
 };

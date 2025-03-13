@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const SKILL_API = `${import.meta.env.VITE_API_ENDPOINT}/skill`;
+
 const getCachedSkillData = () => {
   const cachedData = localStorage.getItem("skillData");
 
@@ -21,9 +23,7 @@ export const fetchSkillData = createAsyncThunk(
       return cachedData;
     }
 
-    const response = await axios.get(
-      "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/skill"
-    );
+    const response = await axios.get(SKILL_API);
     const data = response.data.data;
 
     // Store data in localStorage with expiry time (1 hour)

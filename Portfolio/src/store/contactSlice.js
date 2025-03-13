@@ -1,15 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const CONTACT_API = `${import.meta.env.VITE_API_ENDPOINT}/contacts`;
+
 // Async thunk for form submission
 export const submitContactForm = createAsyncThunk(
   "contact/submitForm",
   async (formData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/contacts",
-        formData
-      );
+      const response = await axios.post(CONTACT_API, formData);
       return response.data;
     } catch (err) {
       return rejectWithValue(

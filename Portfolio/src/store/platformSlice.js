@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const PLATFORM_API = `${import.meta.env.VITE_API_ENDPOINT}/platform`;
+
 const getCachedPlatformData = () => {
   const cachedData = localStorage.getItem("platformData");
   if (cachedData) {
@@ -20,9 +22,7 @@ export const fetchPlatformData = createAsyncThunk(
       return cachedData;
     }
     try {
-      const response = await axios.get(
-        "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/platform"
-      );
+      const response = await axios.get(PLATFORM_API);
       const data = response.data.data;
       localStorage.setItem(
         "platformData",
@@ -30,7 +30,9 @@ export const fetchPlatformData = createAsyncThunk(
       );
       return data;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.message || "Failed to fetch platform data");
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch platform data"
+      );
     }
   }
 );

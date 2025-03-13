@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const HOME_API = `${import.meta.env.VITE_API_ENDPOINT}/home`;
+
 // Function to get cached data with expiry check
 const getCachedHomeData = () => {
   const cachedData = localStorage.getItem("homeData");
@@ -23,9 +25,7 @@ export const fetchHomeData = createAsyncThunk(
       return cachedData;
     }
 
-    const response = await axios.get(
-      "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/home"
-    );
+    const response = await axios.get(HOME_API);
     const data = response.data.data[0];
 
     // Cache data with expiry of 1 hour (3600000ms)

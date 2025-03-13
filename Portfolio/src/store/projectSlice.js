@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const PROJECT_API = `${import.meta.env.VITE_API_ENDPOINT}/project`;
+
 // Function to check cached project data
 const getCachedProjectData = () => {
   const cachedData = localStorage.getItem("projectData");
@@ -14,25 +16,26 @@ const getCachedProjectData = () => {
 };
 
 // Async thunk to fetch project data
-export const fetchProjectData = createAsyncThunk("projects/fetchProjectData", async () => {
-  const cachedData = getCachedProjectData();
-  if (cachedData) {
-    return cachedData; // Return cached data if available
+export const fetchProjectData = createAsyncThunk(
+  "projects/fetchProjectData",
+  async () => {
+    const cachedData = getCachedProjectData();
+    if (cachedData) {
+      return cachedData; // Return cached data if available
+    }
+
+    // Fetch from API if no valid cached data
+    const response = await axios.get(PROJECT_API);
+    const data = response.data.data;
+
+    localStorage.setItem(
+      "projectData",
+      JSON.stringify({ data, expiry: new Date().getTime() + 3600000 })
+    );
+
+    return data;
   }
-
-  // Fetch from API if no valid cached data
-  const response = await axios.get(
-    "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/project"
-  );
-  const data = response.data.data;
-
-  localStorage.setItem(
-    "projectData",
-    JSON.stringify({ data, expiry: new Date().getTime() + 3600000 })
-  );
-
-  return data;
-});
+);
 
 const projectSlice = createSlice({
   name: "projects",

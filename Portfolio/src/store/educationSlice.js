@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const EDUCATION_API = `${import.meta.env.VITE_API_ENDPOINT}/education`;
+
 const getCachedEducationData = () => {
   const cachedData = localStorage.getItem("educationData");
 
@@ -21,9 +23,7 @@ export const fetchEducationData = createAsyncThunk(
       return cachedData;
     }
 
-    const response = await axios.get(
-      "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/education"
-    );
+    const response = await axios.get(EDUCATION_API);
     const data = response.data.data;
 
     // Store in cache with expiry of 1 hour (3600000ms)

@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const ABOUT_API = `${import.meta.env.VITE_API_ENDPOINT}/about`;
+
 const getCachedAboutData = () => {
   const cachedData = localStorage.getItem("aboutData");
 
@@ -20,9 +22,7 @@ export const fetchAboutData = createAsyncThunk(
     if (cachedData) {
       return cachedData;
     }
-    const response = await axios.get(
-      "https://portfolio-backend-image-v3.onrender.com/api/v2/portfolio/about"
-    );
+    const response = await axios.get(ABOUT_API);
     const data = response.data.data;
 
     localStorage.setItem(
